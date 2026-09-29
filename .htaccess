@@ -1,0 +1,9 @@
+ErrorDocument 404 /myshop/mymobileshop/404.php
+
+Options -Indexes
+
+# Prevent direct access to sensitive files
+<FilesMatch "\.(sql|log|md)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

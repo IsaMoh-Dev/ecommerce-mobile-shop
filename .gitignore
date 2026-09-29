@@ -1,0 +1,34 @@
+# ── Credentials & Config ─────────────────────────────────────────────────────
+config.php
+.env
+.env.*
+!.env.example
+
+# ── Logs (contain password reset tokens & customer PII) ──────────────────────
+logs/
+*.log
+
+# ── Database dumps (may contain real user data) ───────────────────────────────
+database/*.sql
+
+# ── PHP / Composer dependencies ───────────────────────────────────────────────
+vendor/
+composer.lock
+
+# ── IDE & Editor files ────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ── OS generated files ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Uploaded assets (large binary files — optional, uncomment if needed) ──────
+# assets/products/
+# assets/blog/

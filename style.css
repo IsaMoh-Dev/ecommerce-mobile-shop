@@ -1,0 +1,1099 @@
+﻿/* =====================================================
+   GOOGLE FONTS
+   ===================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&family=Rubik:wght@400;500;600;700&display=swap");
+
+/* =====================================================
+   CSS VARIABLES
+   ===================================================== */
+:root {
+    --primary:     #003859;
+    --secondary:   #00A5C4;
+    --accent:      #FFD289;
+    --dark:        #1a1a2e;
+    --light-bg:    #fafaf8;
+    --border:      #e0e0e0;
+    --text-muted:  #6c757d;
+    --success:     #28a745;
+    --danger:      #dc3545;
+    --warning:     #ffc107;
+}
+
+/* =====================================================
+   RESET & BASE
+   ===================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    scroll-padding-top: 72px; /* offset for sticky navbar on anchor links */
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: #1a1a1a;
+    background: #fafaf8;
+    margin: 0;
+}
+
+a { text-decoration: none; color: inherit; }
+a:hover { color: var(--secondary); }
+
+img { max-width: 100%; }
+
+button:focus, button:focus-visible { outline: none !important; box-shadow: none !important; }
+
+/* =====================================================
+   TOP BAR
+   ===================================================== */
+.top-bar {
+    background: var(--primary);
+    color: #fff;
+    padding: 6px 0;
+    font-size: 12px;
+    position: relative;
+    z-index: 1001;
+    overflow: visible;
+}
+.top-bar-text { color: rgba(255,255,255,0.85); }
+.top-bar-link {
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    transition: color 0.2s;
+    position: relative;
+    z-index: 1030;
+    pointer-events: auto !important;
+}
+.top-bar-link:hover { color: var(--accent); }
+.top-bar .dropdown-menu {
+    font-size: 13px;
+    min-width: 200px;
+    border-radius: 10px;
+    z-index: 9999;
+    margin-top: 8px !important;
+    border: none;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+.top-bar .dropdown-menu .dropdown-item {
+    font-size: 13px;
+    padding: 9px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s;
+}
+.top-bar .dropdown-menu .dropdown-item:hover {
+    background: #f0f8ff;
+    color: var(--primary);
+}
+
+/* Top bar brand */
+.top-bar-brand {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.top-bar-brand-loc-icon {
+    font-size: 10px;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+.top-bar-brand-info {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.2px;
+}
+
+/* Hi, Name dropdown toggle styling */
+.top-bar .dropdown-toggle {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 3px 12px !important;
+    transition: background 0.2s;
+}
+.top-bar .dropdown-toggle:hover,
+.top-bar .dropdown-toggle[aria-expanded="true"] {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.4);
+}
+
+/* =====================================================
+   MAIN NAVBAR
+   ===================================================== */
+#main-nav {
+    background: var(--secondary);
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    z-index: 1000;
+    /* sticky-top keeps it in document flow on load,
+       sticks at top once top-bar scrolls away */
+}
+
+/* =====================================================
+   PAGE CONTENT WRAPPER
+   ===================================================== */
+/*
+ * sticky-top navbar height ≈ 68px (48px logo + 10px padding top/bottom).
+ * scroll-padding-top is set on <html> above so anchor links land
+ * below the sticky navbar. No padding-top on #main-site itself —
+ * the homepage banner should sit flush under the navbar.
+ */
+#main-site {
+    /* intentionally empty — spacing handled per-section */
+}
+
+/* =====================================================
+   BANNER CAROUSEL
+   ===================================================== */
+
+/* Gap strip between navbar and banner — same color as footer (#0d1b2a) */
+#banner-area {
+    position: relative;
+    margin-top: 0;
+    line-height: 0;
+    display: block;
+    overflow: hidden;
+    border-top: 10px solid #0d1b2a;
+}
+#banner-area .owl-carousel { line-height: 0; }
+#banner-area .owl-carousel .item img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+}
+#banner-area .owl-dots {
+    position: absolute;
+    bottom: 14px;
+    width: 100%;
+    text-align: center;
+    line-height: normal;
+}
+
+/* =====================================================
+   INNER PAGE SPACING
+   ===================================================== */
+/*
+ * All inner pages start with a <section class="py-4"> or py-5.
+ * Bootstrap py-4 = 1.5rem (24px) top padding — enough breathing room.
+ * The support hero uses inline padding:50px 0 40px — also fine.
+ * We just ensure no section collapses its top margin into the navbar.
+ */
+#main-site > section:first-child {
+    margin-top: 0;
+}
+
+.nav-logo {
+    font-family: 'Rubik', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff !important;
+    letter-spacing: 1px;
+}
+
+#main-nav .nav-link {
+    color: rgba(255,255,255,0.9) !important;
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 14px !important;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+#main-nav .nav-link:hover,
+#main-nav .nav-link.active {
+    background: rgba(255,255,255,0.15);
+    color: #fff !important;
+}
+
+/* Dropdown */
+.nav-dropdown {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    padding: 8px 0;
+    min-width: 200px;
+}
+.nav-dropdown .dropdown-item {
+    font-size: 13px;
+    padding: 8px 16px;
+    transition: background 0.15s;
+}
+.nav-dropdown .dropdown-item:hover { background: #f0f8ff; color: var(--primary); }
+
+/* =====================================================
+   SEARCH BAR (Amazon style)
+   ===================================================== */
+.nav-search { flex: 1; max-width: 600px; margin: 0 20px; overflow: visible; position: relative; z-index: 1; }
+
+.nav-search-inner {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid var(--accent);
+    background: #fff;
+}
+
+.nav-search-cat {
+    border: none;
+    background: #f0f0f0;
+    padding: 0 10px;
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    border-right: 1px solid #ddd;
+    min-width: 80px;
+    outline: none;
+}
+
+.nav-search-input {
+    flex: 1;
+    border: none;
+    padding: 10px 14px;
+    font-size: 14px;
+    outline: none;
+    color: #333;
+}
+
+.nav-search-btn {
+    background: var(--accent);
+    border: none;
+    padding: 0 18px;
+    font-size: 16px;
+    color: var(--primary);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.nav-search-btn:hover { background: #f5c842; }
+
+/* Cart button in nav */
+.nav-cart-btn {
+    position: relative;
+    z-index: 1030;
+    color: #fff;
+    font-size: 22px;
+    padding: 4px 8px;
+    transition: color 0.2s;
+    flex-shrink: 0;
+    pointer-events: auto !important;
+}
+.nav-cart-btn:hover { color: var(--accent); }
+
+.nav-cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--danger);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+#footer { background: #0d1b2a; color: rgba(255,255,255,0.8); }
+
+.footer-top { padding: 50px 0 30px; }
+
+.footer-brand h4 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+}
+.footer-brand p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.6); }
+
+.footer-social { display: flex; gap: 10px; margin-top: 14px; }
+.footer-social a {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+}
+.footer-social a:hover { background: var(--secondary); color: #fff; }
+
+.footer-heading {
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--secondary);
+    display: inline-block;
+}
+
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 8px; }
+.footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    transition: color 0.2s, padding-left 0.2s;
+}
+.footer-links a:hover { color: var(--secondary); padding-left: 4px; }
+
+.footer-newsletter {
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.footer-newsletter input {
+    flex: 1; border: none; background: rgba(255,255,255,0.08);
+    padding: 10px 12px; color: #fff; font-size: 13px; outline: none;
+}
+.footer-newsletter input::placeholder { color: rgba(255,255,255,0.4); }
+.footer-newsletter button {
+    background: var(--secondary); border: none;
+    padding: 0 16px; color: #fff; font-size: 13px;
+    font-weight: 600; cursor: pointer; transition: background 0.2s;
+}
+.footer-newsletter button:hover { background: var(--primary); }
+
+.footer-contact p { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+
+.footer-payment {
+    background: rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 14px 0;
+}
+.payment-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+}
+
+.footer-bottom {
+    background: rgba(0,0,0,0.3);
+    padding: 14px 0;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer-bottom a { color: var(--secondary); }
+.footer-bottom a:hover { color: #fff; }
+.footer-legal-link:hover { color: #fff !important; text-decoration: underline; }
+
+/* =====================================================
+   PRODUCT CARDS
+   ===================================================== */
+.product-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    transition: box-shadow 0.25s, transform 0.25s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.product-card:hover {
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+    transform: translateY(-4px);
+}
+.product-card .card-img-wrap {
+    position: relative;
+    overflow: hidden;
+    background: #f8f9fa;
+    padding: 16px;
+    text-align: center;
+    height: 200px;
+    display: flex; align-items: center; justify-content: center;
+}
+.product-card .card-img-wrap img {
+    max-height: 160px;
+    object-fit: contain;
+    transition: transform 0.4s;
+}
+.product-card:hover .card-img-wrap img { transform: scale(1.07); }
+
+.product-card .badge-sale {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--danger); color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 3px 8px; border-radius: 4px;
+}
+.product-card .card-body { padding: 14px; display: flex; flex-direction: column; flex: 1; }
+.product-card .card-brand { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.product-card .card-title { font-family: 'Rubik', sans-serif; font-size: 14px; font-weight: 600; margin: 4px 0 6px; color: #1a1a1a; flex-grow: 1; min-height: 42px; }
+.product-card .card-rating { color: var(--warning); font-size: 11px; margin-bottom: 6px; }
+.product-card .card-price-wrap { min-height: 44px; margin-bottom: 10px; }
+.product-card .card-price { font-size: 16px; font-weight: 700; color: var(--danger); display: block; }
+.product-card .card-old-price { font-size: 12px; color: var(--text-muted); text-decoration: line-through; margin-left: 0; display: block; }
+.product-card .btn-cart {
+    width: 100%; padding: 8px;
+    background: var(--primary); color: #fff;
+    border: none; border-radius: 8px;
+    font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s;
+}
+.product-card .btn-cart:hover { background: var(--secondary); }
+.product-card .btn-cart.in-cart { background: var(--success); cursor: default; }
+
+/* =====================================================
+   SECTION HEADINGS
+   ===================================================== */
+.section-heading {
+    font-family: 'Rubik', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+    position: relative;
+    padding-bottom: 4px;
+    margin-bottom: 24px;
+}
+.section-heading::after {
+    display: none;
+}
+
+/* =====================================================
+   AUTH MODAL
+   ===================================================== */
+.auth-modal-dialog { max-width: 460px; width: 94%; }
+.auth-modal-content { border: none; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.18); position: relative; }
+
+.auth-close-btn {
+    position: absolute; top: 14px; right: 16px;
+    background: none; border: none; font-size: 18px;
+    color: #555; cursor: pointer; z-index: 10;
+    padding: 4px 8px; border-radius: 50%; transition: background 0.2s;
+}
+.auth-close-btn:hover { background: #f0f0f0; }
+
+.auth-modal-body { padding: 38px 34px 28px; }
+
+.auth-shield-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto;
+}
+.auth-shield-icon i { color: #fff; font-size: 22px; }
+
+.auth-title { font-family: 'Rubik', sans-serif; font-size: 22px; font-weight: 700; color: #1a1a1a; margin: 10px 0 4px; }
+.auth-subtitle { font-size: 13px; color: #555; }
+
+.auth-alert {
+    padding: 10px 14px; border-radius: 8px;
+    font-size: 13px; margin-bottom: 12px;
+}
+.auth-alert.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.auth-alert.error   { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+.auth-input-group { position: relative; }
+.auth-input {
+    width: 100%; padding: 13px 16px;
+    border: 1.5px solid #ddd; border-radius: 8px;
+    font-size: 14px; color: #1a1a1a; background: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+}
+.auth-input:focus { border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(0,165,196,0.12); background: #fff; }
+.auth-input::placeholder { color: #aaa; }
+
+.auth-eye-btn {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; color: #888; cursor: pointer; font-size: 14px;
+}
+.auth-eye-btn:hover { color: var(--primary); }
+
+.auth-continue-btn {
+    padding: 13px; background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff; border: none; border-radius: 8px;
+    font-family: 'Rubik', sans-serif; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: opacity 0.2s, transform 0.1s;
+}
+.auth-continue-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+.auth-continue-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.auth-trouble-link, .auth-change-link { font-size: 13px; color: var(--secondary); }
+.auth-trouble-link:hover, .auth-change-link:hover { color: var(--primary); text-decoration: underline; }
+
+.auth-step-label { font-size: 13px; color: #555; }
+
+.auth-divider {
+    display: flex; align-items: center; gap: 12px;
+    color: #aaa; font-size: 13px;
+}
+.auth-divider::before, .auth-divider::after {
+    content: ''; flex: 1; height: 1px; background: #e0e0e0;
+}
+
+.auth-social-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.auth-social-btn {
+    width: 50px; height: 50px; border-radius: 50%;
+    border: 1.5px solid #e0e0e0;
+    display: flex; align-items: center; justify-content: center;
+    background: #fff; transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    cursor: pointer; padding: 0;
+}
+.auth-social-btn:hover { border-color: #bbb; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transform: translateY(-2px); }
+
+.auth-terms { font-size: 11px; color: #999; line-height: 1.6; }
+.auth-terms a { color: var(--secondary); }
+
+.auth-spinner {
+    display: inline-block; width: 15px; height: 15px;
+    border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff;
+    border-radius: 50%; animation: spin 0.7s linear infinite;
+    vertical-align: middle; margin-right: 6px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =====================================================
+   OWL CAROUSEL NAV
+   ===================================================== */
+.owl-nav button { position: absolute; top: 35%; outline: none !important; }
+.owl-nav button.owl-prev { left: -20px; }
+.owl-nav button.owl-next { right: -20px; }
+.owl-nav button span { font-size: 32px; color: var(--primary); }
+
+/* =====================================================
+   BUTTONS UTILITY
+   ===================================================== */
+.btn-primary-custom {
+    background: var(--primary); color: #fff; border: none;
+    padding: 10px 24px; border-radius: 8px; font-weight: 600;
+    transition: background 0.2s;
+}
+.btn-primary-custom:hover { background: var(--secondary); color: #fff; }
+
+.btn-secondary-custom {
+    background: var(--secondary); color: #fff; border: none;
+    padding: 10px 24px; border-radius: 8px; font-weight: 600;
+    transition: background 0.2s;
+}
+.btn-secondary-custom:hover { background: var(--primary); color: #fff; }
+
+/* =====================================================
+   CART PAGE
+   ===================================================== */
+.cart-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+.cart-item img { width: 90px; height: 90px; object-fit: contain; background: #f8f9fa; border-radius: 8px; padding: 6px; }
+.cart-subtotal-box { background: #f8f9fa; border-radius: 12px; padding: 20px; border: 1px solid var(--border); }
+
+/* =====================================================
+   CHECKOUT PAGE
+   ===================================================== */
+.checkout-section { background: #f8f9fa; min-height: 100vh; padding: 40px 0; }
+.checkout-card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.checkout-card h5 { font-family: 'Rubik', sans-serif; font-weight: 600; color: var(--primary); margin-bottom: 20px; }
+
+.payment-option {
+    border: 2px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    margin-bottom: 10px;
+}
+.payment-option:hover { border-color: var(--secondary); background: #f0fbff; }
+.payment-option.selected { border-color: var(--secondary); background: #e8f7fb; }
+
+/* =====================================================
+   ADMIN PANEL
+   ===================================================== */
+.admin-sidebar {
+    width: 240px; min-height: 100vh;
+    background: var(--primary); color: #fff;
+    position: fixed; top: 0; left: 0; z-index: 2000;
+    padding-top: 20px;
+}
+.admin-sidebar .admin-logo {
+    font-family: 'Rubik', sans-serif; font-size: 18px; font-weight: 700;
+    padding: 16px 20px 24px; border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+}
+.admin-sidebar .nav-link {
+    color: rgba(255,255,255,0.75) !important;
+    padding: 12px 20px !important; font-size: 14px;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 2001;
+    display: block;
+}
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+    color: #fff !important;
+    background: rgba(255,255,255,0.1);
+    border-left-color: var(--accent);
+}
+.admin-sidebar .nav-link i { width: 20px; margin-right: 8px; }
+
+.admin-content { margin-left: 240px; padding: 30px; background: #f4f6f9; min-height: 100vh; position: relative; z-index: 1; }
+
+.admin-topbar {
+    background: #fff; padding: 14px 24px;
+    border-radius: 10px; margin-bottom: 24px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.stat-card {
+    background: #fff; border-radius: 12px; padding: 22px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--secondary);
+    transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-3px); }
+.stat-card .stat-icon { font-size: 32px; opacity: 0.2; }
+.stat-card .stat-value { font-family: 'Rubik', sans-serif; font-size: 28px; font-weight: 700; color: var(--primary); }
+.stat-card .stat-label { font-size: 13px; color: var(--text-muted); }
+
+.admin-table { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.admin-table table { margin: 0; }
+.admin-table thead th { background: var(--primary); color: #fff; font-size: 13px; font-weight: 600; border: none; padding: 14px 16px; }
+.admin-table tbody td { font-size: 13px; padding: 12px 16px; vertical-align: middle; border-color: #f0f0f0; }
+.admin-table tbody tr:hover { background: #f8f9fa; }
+
+/* =====================================================
+   SEARCH / PRODUCTS PAGE
+   ===================================================== */
+.filter-sidebar { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.filter-sidebar h6 { font-family: 'Rubik', sans-serif; font-weight: 600; color: var(--primary); margin-bottom: 12px; }
+
+/* =====================================================
+   ALERTS & BADGES
+   ===================================================== */
+.badge-primary { background: var(--primary); }
+.badge-secondary { background: var(--secondary); }
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 991px) {
+    .nav-search { max-width: 100%; margin: 10px 0; order: 3; width: 100%; }
+    .admin-sidebar { width: 100%; min-height: auto; position: relative; }
+    .admin-content { margin-left: 0; }
+}
+@media (max-width: 576px) {
+    .auth-modal-body { padding: 28px 18px 22px; }
+    .auth-social-btn { width: 44px; height: 44px; }
+}
+
+/* =====================================================
+   SEARCH SUGGESTIONS DROPDOWN
+   ===================================================== */
+#searchSuggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0 0 10px 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 9999;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    max-height: 320px;
+    overflow-y: auto;
+}
+#searchSuggestions li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 13px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.15s;
+}
+#searchSuggestions li a:hover { background: #f0f8ff; }
+#searchSuggestions li a img {
+    width: 36px; height: 36px;
+    object-fit: contain;
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 3px;
+}
+#searchSuggestions li a span { flex: 1; }
+#searchSuggestions li a strong { color: #dc3545; font-size: 13px; }
+
+/* =====================================================
+   ABOUT PAGE
+   ===================================================== */
+.about-stat-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
+}
+.about-stat-card:hover { transform: translateY(-4px); }
+.about-stat-card .about-stat-icon {
+    width: 48px; height: 48px;
+    background: rgba(0,56,89,0.08);
+    color: var(--primary);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin: 0 auto;
+}
+
+.about-feature-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+    height: 100%;
+}
+.about-feature-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-4px); }
+.about-feature-icon {
+    width: 52px; height: 52px;
+    background: rgba(0,56,89,0.08);
+    color: var(--primary);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin: 0 auto;
+}
+
+.about-brand-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+.about-brand-badge:hover {
+    border-color: var(--secondary);
+    background: var(--secondary);
+    color: #fff;
+}
+
+.about-visit-card {
+    background: linear-gradient(135deg, var(--primary) 0%, #005580 100%);
+}
+
+/* =====================================================
+   SUPPORT PAGE
+   ===================================================== */
+.support-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s, transform 0.2s;
+    height: 100%;
+}
+.support-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-4px); }
+.support-card-icon {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin: 0 auto;
+}
+
+.support-accordion-item {
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.support-accordion-item .accordion-button {
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary);
+    background: #fff;
+    box-shadow: none !important;
+}
+.support-accordion-item .accordion-button:not(.collapsed) {
+    color: var(--secondary);
+    background: #f0fbff;
+}
+.support-accordion-item .accordion-button::after {
+    filter: none;
+}
+
+.support-input {
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 11px 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.support-input:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 3px rgba(0,165,196,0.12);
+    outline: none;
+}
+
+/* =====================================================
+   FLOATING CONTACT BUTTONS
+   ===================================================== */
+.float-contact-group {
+    position: fixed;
+    bottom: 24px;
+    left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 9999;
+}
+.float-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    opacity: 0.9;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s, width 0.25s, border-radius 0.25s;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.float-btn:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    width: auto;
+    padding: 0 16px;
+    border-radius: 50px;
+    color: #fff;
+}
+.float-btn-label {
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Rubik', sans-serif;
+    opacity: 0;
+    max-width: 0;
+    margin-left: 0;
+    transition: opacity 0.2s, max-width 0.25s, margin-left 0.25s;
+    overflow: hidden;
+}
+.float-btn:hover .float-btn-label {
+    opacity: 1;
+    max-width: 100px;
+    margin-left: 5px;
+}
+/* Exact official brand colors */
+.float-telegram  { background: #229ED9; }
+.float-telegram:hover  { background: #1a8bbf; }
+.float-whatsapp  { background: #25D366; }
+.float-whatsapp:hover  { background: #1aad52; }
+.float-facebook  { background: #1877F2; }
+.float-facebook:hover  { background: #0c63d4; }
+.float-instagram { background: #E1306C; }
+.float-instagram:hover { background: #c1255c; }
+.float-youtube   { background: #FF0000; }
+.float-youtube:hover   { background: #cc0000; }
+.float-tiktok    { background: #010101; border: 1.5px solid #69C9D0; }
+.float-tiktok:hover    { background: #111; }
+
+@media (max-width: 576px) {
+    .float-contact-group { bottom: 14px; left: 12px; }
+    .float-btn { width: 26px; height: 26px; font-size: 12px; }
+}/* =====================================================
+   PAGINATION
+   ===================================================== */
+.pagination-custom .page-link {
+    border: 1.5px solid var(--border);
+    color: var(--primary);
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 14px;
+    margin: 0 2px;
+    border-radius: 8px !important;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.pagination-custom .page-link:hover {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    color: #fff;
+}
+.pagination-custom .page-item.active .page-link {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+.pagination-custom .page-item.disabled .page-link {
+    color: #ccc;
+    border-color: #eee;
+    background: #fafafa;
+}
+
+/* =====================================================
+   UI IMPROVEMENTS — v2
+   ===================================================== */
+
+/* ---- Floating buttons: don't overlap content on mobile ---- */
+@media (max-width: 576px) {
+    .float-contact-group {
+        bottom: 70px; /* above mobile browser nav bar */
+        left: 10px;
+    }
+    .float-btn { width: 36px; height: 36px; font-size: 14px; opacity: 0.85; }
+}
+
+/* ---- Product cards: better mobile sizing ---- */
+@media (max-width: 576px) {
+    .product-card .card-img-wrap { height: 150px; padding: 10px; }
+    .product-card .card-img-wrap img { max-height: 120px; }
+    .product-card .card-title { font-size: 12px; min-height: 36px; }
+    .product-card .card-price { font-size: 14px; }
+    .product-card .card-body { padding: 10px; }
+    .product-card .btn-cart { font-size: 11px; padding: 6px; }
+}
+
+/* ---- Blog card images: consistent aspect ratio ---- */
+.blog-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    display: block;
+}
+.blog-card-img-wrap {
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+.blog-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+.blog-card-img-wrap:hover img { transform: scale(1.05); }
+
+/* ---- Footer: better text sizes ---- */
+.footer-links a { font-size: 14px; }
+.footer-contact p { font-size: 13px; }
+.footer-brand p { font-size: 14px; }
+.footer-bottom { font-size: 13px; }
+.payment-badge { font-size: 13px; padding: 6px 14px; }
+
+/* ---- Cart: min-width fix for flex items ---- */
+.cart-item .flex-grow-1 { min-width: 0; }
+.cart-item h6 { white-space: normal; word-break: break-word; }
+@media (max-width: 576px) {
+    .cart-item img { width: 70px; height: 70px; }
+    .cart-item { padding: 14px 0; }
+    .cart-subtotal-box { padding: 16px; }
+}
+
+/* ---- Profile tabs: scrollable on mobile ---- */
+.profile-tabs { border-bottom: 2px solid #e0e0e0; }
+.profile-tabs .nav-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    padding: 10px 16px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+}
+.profile-tabs .nav-link:hover { color: var(--secondary); }
+.profile-tabs .nav-link.active {
+    color: var(--primary);
+    border-bottom-color: var(--secondary);
+    background: transparent;
+}
+@media (max-width: 576px) {
+    .profile-tabs .nav-link { font-size: 12px; padding: 8px 12px; }
+}
+
+/* ---- Consistent card shadows ---- */
+.bg-white.rounded-3.shadow-sm { box-shadow: 0 2px 12px rgba(0,0,0,0.07) !important; }
+
+/* ---- Consistent section spacing ---- */
+section.py-4 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+section.py-5 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+/* ---- Better form focus states ---- */
+.form-control:focus, .form-select:focus {
+    border-color: var(--secondary) !important;
+    box-shadow: 0 0 0 3px rgba(0,165,196,0.15) !important;
+    outline: none !important;
+}
+
+/* ---- Unified button hover ---- */
+.btn-primary-custom:hover,
+.btn-secondary-custom:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+/* ---- Search page: filter sidebar sticky ---- */
+@media (min-width: 768px) {
+    .filter-sidebar {
+        position: sticky;
+        top: 80px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+    .filter-sidebar::-webkit-scrollbar { display: none; }
+}
+
+/* ---- Pagination mobile ---- */
+@media (max-width: 576px) {
+    .pagination-custom .page-link { padding: 6px 10px; font-size: 12px; }
+}
+
+/* ---- Section heading responsive ---- */
+@media (max-width: 576px) {
+    .section-heading { font-size: 18px; }
+}
+
+/* ---- Order cards mobile ---- */
+@media (max-width: 576px) {
+    .order-card-header { padding: 12px 14px; }
+    .order-card-header .order-num { font-size: 14px; }
+    .order-items-list { padding: 0 14px 12px; }
+    .order-card-footer { padding: 10px 14px; }
+    .progress-steps::before { left: 10px; right: 10px; }
+    .step-dot { width: 28px; height: 28px; font-size: 11px; }
+    .step-label { font-size: 9px; }
+}
+
+/* ---- Checkout: sticky place order on mobile ---- */
+@media (max-width: 767px) {
+    #checkoutForm button[name="place_order"] {
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+        border-radius: 0;
+        margin-left: -28px;
+        margin-right: -28px;
+        width: calc(100% + 56px);
+    }
+}
+
+/* ---- Top bar: bigger tap targets on mobile ---- */
+@media (max-width: 576px) {
+    .top-bar-link { font-size: 13px; padding: 4px 6px; }
+    .top-bar { padding: 8px 0; }
+}
